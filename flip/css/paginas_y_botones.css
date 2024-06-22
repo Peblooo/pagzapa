@@ -1,0 +1,172 @@
+/* Estilos para los botones individuales */
+
+.btn {
+    /* Estilos generales del botón */
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: rgba(0, 119, 103, 0.877);
+}
+
+#btn1 {
+    position: absolute;
+    top: 100px;
+    left: 360px;
+}
+
+#btn2 {
+    position: absolute;
+    bottom: 250px;
+    left: 360px;
+}
+
+#btn3 {
+    position: absolute;
+    bottom: 80px;
+    right: 340px;
+}
+
+#btn4 {
+    position: absolute;
+    top: 100px;
+    left: 360px;
+}
+
+#btn5 {
+    position: absolute;
+    bottom: 290px;
+    left: 600px;
+}
+
+#btn6 {
+    position: absolute;
+    bottom: 100px;
+    right: 320px;
+}
+
+#btn7 {
+    position: absolute;
+    top: 100px;
+    left: 360px;
+}
+
+#btn8 {
+    position: absolute;
+    bottom: 350px;
+    left: 650px;
+}
+
+#btn9 {
+    position: absolute;
+    bottom: 190px;
+    right: 340px;
+}
+
+#btn10 {
+    position: absolute;
+    top: 450px;
+    left: 660px;
+}
+
+#btn11 {
+    position: absolute;
+    top: 100px;
+    left: 600px;
+}
+
+#btn12 {
+    position: absolute;
+    bottom: 250px;
+    left: 600px;
+}
+
+#btn13 {
+    position: absolute;
+    bottom: 80px;
+    right: 100px;
+}
+
+#btn14 {
+    position: absolute;
+    top: 100px;
+    left: 360px;
+}
+
+#btn15 {
+    position: absolute;
+    bottom: 250px;
+    left: 360px;
+}
+
+#btn16 {
+    position: absolute;
+    bottom: 90px;
+    right: 340px;
+}
+
+#btn17 {
+    position: absolute;
+    top: 100px;
+    left: 300px;
+}
+
+#btn18 {
+    position: absolute;
+    bottom: 340px;
+    left: 600px;
+}
+
+#btn19 {
+    position: absolute;
+    bottom: 130px;
+    right: 340px;
+}
+
+#btn20 {
+    position: absolute;
+    top: 100px;
+    left: 300px;
+}
+
+#btn21 {
+    position: absolute;
+    bottom: 340px;
+    left: 600px;
+}
+
+#btn22 {
+    position: absolute;
+    bottom: 130px;
+    right: 340px;
+}
+
+
+.btn:hover {
+    background-color: #007767;
+}
+
+@media (max-width: 768px) {
+
+    .btn {
+        padding: 1px 1px; /* Reducir el padding para hacer el botón más pequeño */
+        font-size: 8px; /* Reducir el tamaño de fuente */
+    }
+    
+    #btn1 {
+        position: absolute;
+        top: 50px;
+        left: 180px;
+    }
+
+    #btn2 {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+    }
+    
+    #btn3 {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+    }
+}

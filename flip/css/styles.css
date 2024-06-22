@@ -1,0 +1,410 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+}
+
+.rotating-text-container {
+    text-align: center;
+    margin-top: 10px;
+    overflow: hidden; /* Ocultar el texto fuera del contenedor */
+    height: 20px; /* Ajustar según el tamaño de fuente */
+    background-color: #fff8f8;
+  }
+  
+  .rotating-text {
+    font-size: 16px;
+    font-weight: bold;
+    opacity: 0; /* Ocultar el texto inicialmente */
+    animation: slideLeftRight 12s infinite;
+}
+
+@keyframes slideLeftRight {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    5%, 95% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Header */
+header {
+    height: 200px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #353535;
+    background: #fff8f8;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.logo img {
+    width: 150px; /* Ajusta este valor según tus necesidades */
+    height: auto; /* Mantiene la proporción de la imagen */
+    margin: 0 15px;
+}
+
+.logo-2 img {
+    width: 150px; /* Ajusta este valor según tus necesidades */
+    height: auto; /* Mantiene la proporción de la imagen */
+    margin: 0 0px;
+}
+
+#banner {
+    background-size: cover;
+    background-position: center;
+    height: 1000px; /* Ajusta la altura según tus necesidades */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.contenido-banner {
+    max-width: 600px; /* Ajusta el ancho máximo del contenido del banner */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Ocupa el 100% del contenedor padre (en este caso, #banner) */
+}
+
+.contenido-banner img {
+    max-width: 100%; /* Ajusta el ancho máximo de la imagen */
+    height: auto; /* Mantiene la proporción de la imagen */
+    margin-top: 20px; /* Espacio opcional entre el texto y la imagen */
+    max-height: 150px; /* Ajusta el tamaño máximo de altura de la imagen */
+}
+
+.contenido-banner h3 {
+    font-size: 3rem; /* Ajusta el tamaño del texto según tus necesidades */
+    margin-bottom: 20px;
+}
+
+.contenido-banner img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px; /* Espacio opcional entre el texto y la imagen */
+}
+
+/* Estilos para texto "Mientras tanto" */
+.mientras-tanto {
+    font-size: 1.5rem; /* Ajusta el tamaño del texto "Mientras tanto" */
+    margin-top: 20px; /* Espacio opcional entre los textos */
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-bar input[type="text"] {
+    padding: 5px;
+    font-size: 1rem;
+    width: 150px; /* Ajusta este valor según tus necesidades */
+}
+
+.search-bar button {
+    padding: 5px 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.search-bar button:hover {
+    background-color: #ddd;
+}
+
+.login-link{
+    color: #fff;
+    width: 200px;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.login-link:hover{
+    color: rgba(255, 255, 255, 0.486);
+    transition: 0.4s;
+}
+
+.menu {
+    display: flex;
+    gap: 20px;
+}
+
+.menu a {
+    color: #000000;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0 10px;
+    transition: 0.4s;
+}
+
+
+.esconder-menu {
+    font-size: 30px;
+    cursor: pointer;
+    transition: 0.4s;
+    color: #000000;
+}
+
+.mostrar-menu{
+    font-size: 30px;
+    cursor: pointer;
+    transition: 0.4s;
+    color: #000000;
+    margin: 0 20px;
+}
+
+.menu a:hover,
+.mostrar-menu:hover,
+.esconder-menu:hover {
+    color: #00000073;
+}
+
+
+#check {
+    display: none;
+}
+
+footer {
+    background: #fff8f8;
+    color: #000000;
+    padding: 20px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin: 20px;
+}
+
+.footer-section h3 {
+    margin-bottom: 15px;
+}
+
+.footer-section p, .footer-section ul {
+    margin: 0;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #000000;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid #555555;
+    margin-top: 20px;
+}
+
+.social-links a {
+    display: inline-block;
+    margin-right: 10px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #dddddd;
+}
+
+/* Dropdown menu */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #353535;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    animation: fadeIn 0.5s;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+
+}
+
+.dropdown-content a {
+    color: #ffffff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+.dropdown-content a:hover {
+    background-color: #575757;
+}
+
+
+/* Styles for larger screens */
+@media (min-width: 769px) {
+    .menu {
+        position: static;
+        width: auto;
+        height: auto;
+        flex-direction: row;
+        background: none;
+        padding: 0;
+        right: 0;
+        top: 0;
+    }
+
+    .menu a {
+        display: inline;
+        padding: 0 10px;
+    }
+
+    .mostrar-menu,
+    .esconder-menu {
+        display: none;
+    }
+
+    .search-bar {
+        display: flex;
+    }
+
+    .logo-2 img{
+        display: none;
+    }
+}
+
+/* Styles for smaller screens */
+@media (max-width: 768px) {
+    .mostrar-menu,
+    .esconder-menu {
+        display: block;
+    }
+
+    .menu {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: #fff8f8;
+        left: -100%; /* Cambia de 'right' a 'left' */
+        top: 0;
+        text-align: center;
+        padding: 100px 0px;
+        z-index: 100;
+        transition: 0.8s;
+        flex-direction: column;
+    }
+
+    .menu a{
+        display: block;
+        padding: 20px;
+    }
+
+    .esconder-menu {
+        position: absolute;
+        top: 40px;
+        left: 40px; /* Cambia de 'right' a 'left' */
+    }
+
+    #check:checked ~ .menu {
+        left: 0; /* Cambia de 'right' a 'left' */
+    }
+
+    .search-bar {
+        width: 100%;
+        padding: 10px 20px;
+    }
+
+    .search-bar input[type="text"] {
+        width: calc(100% - 80px); /* Ajusta el ancho del input en móviles */
+    }
+
+    .search-bar button {
+        width: 100px; /* Ajusta el ancho del botón en móviles */
+    }
+
+    .login-link {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        position: static;
+        transform: none;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section {
+        max-width: 90%;
+        text-align: center;
+    }
+
+    .dropdown-content {
+        position: static;
+        background-color: #383838;
+        box-shadow: none;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0s;
+    }
+
+    .dropdown-content a {
+        padding: 20px;
+    }
+
+    .contenido-banner h3 {
+        font-size: 2rem; /* Reducir tamaño de fuente en pantallas pequeñas */
+    }
+}

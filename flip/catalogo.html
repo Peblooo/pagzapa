@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/js/jquery-3.7.1.min.js"></script>
+    <script src="/js/turn.min.js"></script>
+    <link rel="stylesheet" href="/css/paginas_y_botones.css">
+    <link rel="stylesheet" href="/css/catalogo.css">
+    <link rel="stylesheet" href="/css/carrito.css">
+    <title>Catalogo</title>
+    <style type="text/css">
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: auto;
+            margin: 0;
+            background-color: #fff8f8;
+            flex-direction: column;
+        }
+
+        #flipbook {
+            width: 90%;
+            height: auto;
+            max-width: 900px;
+            max-height: 600px;
+        }
+
+        #flipbook .page {
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            position: relative;
+        }
+
+        #flipbook .page img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #flipbook .page-wrapper {
+            -webkit-perspective: 2000px;
+            -moz-perspective: 2000px;
+            -ms-perspective: 2000px;
+            -o-perspective: 2000px;
+            perspective: 2000px;
+        }
+
+        #flipbook .hard {
+            background: #ccc !important;
+            color: #333;
+            -webkit-box-shadow: inset 0 0 5px #666;
+            -moz-box-shadow: inset 0 0 5px #666;
+            -o-box-shadow: inset 0 0 5px #666;
+            -ms-box-shadow: inset 0 0 5px #666;
+            box-shadow: inset 0 0 5px #666;
+            font-weight: bold;
+        }
+
+        #flipbook .odd {
+            background: -webkit-gradient(linear, right top, left top, color-stop(0.95, #FFF), color-stop(1, #DADADA));
+            background-image: -webkit-linear-gradient(right, #FFF 95%, #C4C4C4 100%);
+            background-image: -moz-linear-gradient(right, #FFF 95%, #C4C4C4 100%);
+            background-image: -ms-linear-gradient(right, #FFF 95%, #C4C4C4 100%);
+            background-image: -o-linear-gradient(right, #FFF 95%, #C4C4C4 100%);
+            background-image: linear-gradient(right, #FFF 95%, #C4C4C4 100%);
+            -webkit-box-shadow: inset 0 0 5px #666;
+            -moz-box-shadow: inset 0 0 5px #666;
+            -o-box-shadow: inset 0 0 5px #666;
+            -ms-box-shadow: inset 0 0 5px #666;
+            box-shadow: inset 0 0 5px #666;
+        }
+
+        #flipbook .even {
+            background: -webkit-gradient(linear, left top, right top, color-stop(0.95, #fff), color-stop(1, #dadada));
+            background-image: -webkit-linear-gradient(left, #fff 95%, #dadada 100%);
+            background-image: -moz-linear-gradient(left, #fff 95%, #dadada 100%);
+            background-image: -ms-linear-gradient(left, #fff 95%, #dadada 100%);
+            background-image: -o-linear-gradient(left, #fff 95%, #dadada 100%);
+            background-image: linear-gradient(left, #fff 95%, #dadada 100%);
+            -webkit-box-shadow: inset 0 0 5px #666;
+            -moz-box-shadow: inset 0 0 5px #666;
+            -o-box-shadow: inset 0 0 5px #666;
+            -ms-box-shadow: inset 0 0 5px #666;
+            box-shadow: inset 0 0 5px #666;
+        }
+
+        @media (max-width: 768px) {
+            #flipbook {
+                width: 90%;
+                height: auto;
+            }
+
+            #flipbook .page {
+                height: auto;
+            }
+
+            .nav-buttons {
+                width: 90%;
+                display: flex;
+                justify-content: space-between;
+            }
+            .page-buttons{
+                height: 50%;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            #flipbook {
+                width: 90%;
+                height: auto;
+            }
+
+            #flipbook .page {
+                height: auto;
+            }
+
+            .nav-buttons {
+                width: 90%;
+                display: flex;
+                justify-content: space-between;
+            }
+            .page-buttons{
+                height: 50%;
+            }
+        }
+
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+            max-width: 900px;
+            margin: 10px 0;
+        }
+
+        .nav-buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+    </style>
+    </head>
+<body>
+
+    <header>
+		<input type="checkbox" id="check">
+		<label for="check" class="mostrar-menu">&#8801</label>
+		<h2 class="logo-catalogo"><a href="/index.html"><img src="/img/logo.png" alt="logo-hv"></a></h2>
+		<svg id="cart-icon" width="78" height="78" viewBox="0 0 512 512" style="color:currentColor" xmlns="http://www.w3.org/2000/svg" class="h-full w-full" aria-label="Shopping Cart Icon">
+			<rect width="256" height="250" x="0" y="0" rx="30" fill="transparent" stroke="transparent" stroke-width="0" stroke-opacity="100%" paint-order="stroke"></rect>
+			<svg width="256px" height="256px" viewBox="0 0 1024 1024" fill="currentColor" x="128" y="128" role="img" style="display:inline-block;vertical-align:middle" xmlns="http://www.w3.org/2000/svg" aria-label="Cart Icon">
+				<g fill="currentColor">
+					<path fill="currentColor" d="M922.9 701.9H327.4l29.9-60.9l496.8-.9c16.8 0 31.2-12 34.2-28.6l68.8-385.1c1.8-10.1-.9-20.5-7.5-28.4a34.99 34.99 0 0 0-26.6-12.5l-632-2.1l-5.4-25.4c-3.4-16.2-18-28-34.6-28H96.5a35.3 35.3 0 1 0 0 70.6h125.9L246 312.8l58.1 281.3l-74.8 122.1a34.96 34.96 0 0 0-3 36.8c6 11.9 18.1 19.4 31.5 19.4h62.8a102.43 102.43 0 0 0-20.6 61.7c0 56.6 46 102.6 102.6 102.6s102.6-46 102.6-102.6c0-22.3-7.4-44-20.6-61.7h161.1a102.43 102.43 0 0 0-20.6 61.7c0 56.6 46 102.6 102.6 102.6s102.6-46 102.6-102.6c0-22.3-7.4-44-20.6-61.7H923c19.4 0 35.3-15.8 35.3-35.3a35.42 35.42 0 0 0-35.4-35.2zM305.7 253l575.8 1.9l-56.4 315.8l-452.3.8L305.7 253zm96.9 612.7c-17.4 0-31.6-14.2-31.6-31.6c0-17.4 14.2-31.6 31.6-31.6s31.6 14.2 31.6 31.6a31.6 31.6 0 0 1-31.6 31.6zm325.1 0c-17.4 0-31.6-14.2-31.6-31.6c0-17.4 14.2-31.6 31.6-31.6s31.6 14.2 31.6 31.6a31.6 31.6 0 0 1-31.6 31.6z"/>
+				</g>
+			</svg>
+		</svg>
+		<nav class="menu">
+		
+			<hr>
+			<div class="dropdown">
+				<a href="">Descargar catalogo<i class="fas fa-caret-down"></i></a>
+			</div>
+			<hr>
+			<div class="dropdown">
+				<a href="https://www.facebook.com/HVDepositosDeCalzado">Facebook <i class="fas fa-caret-down"></i></a>
+			</div>
+			<hr>
+			<div class="dropdown">
+				<a href="#">Whatsapp <i class="fas fa-caret-down"></i></a>
+			</div>
+			<hr>
+			<div class="dropdown">
+				<a href="#">TikTok <i class="fas fa-caret-down"></i></a>
+			</div>
+			<hr>
+			<label for="check" class="esconder-menu">&#215</label>
+		</nav>
+
+		<!-- Modal para el carrito de compras -->
+	<div id="cart-modal" class="modal">
+		<div class="modal-content">
+			<span class="close-cart">&times;</span>
+			<h2>Carrito de Compras</h2>
+			<ul id="cart-items-modal">
+				<!-- Los elementos del carrito serán agregados aquí por JavaScript -->
+			</ul>
+			<button id="checkout-btn-modal">Contactarme con un asesor</button>
+		</div>
+	</div> 
+
+	 <!-- Modal para las tallas de mujer -->
+	 <div id="size-modal" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<h2>Seleccione la talla</h2>
+			<form id="size-form">
+				<label for="shoe-size">Talla:</label>
+				<select id="shoe-size" name="shoe-size">
+					<option value="22">22</option>
+					<option value="23">23</option>
+					<option value="24">24</option>
+					<option value="25">25</option>
+					<option value="26">26</option>
+				</select>
+				<label for="quantity">Cantidad:</label>
+				<input type="number" id="quantity" name="quantity" min="1" value="1">
+				<button type="submit">Agregar al carrito</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+<div id="confirmation-message" class="hidden">
+	Producto agregado al carrito con éxito!
+</div>
+</header>
+
+
+<div id="flipbook">
+    <div class="page">
+        <img src="pages/1.jpg" alt="Page 1">
+    </div>
+    <div class="page">
+        <img src="pages/2.jpg" alt="Page 2">
+        <div id="button-container">
+            <button id="btn1" class="btn btn1" data-name="022" data-color="Negro - Fiusha">Agregar</button>
+            <button id="btn2" class="btn btn1" data-name="022" data-color="Negro - Rosa Pastel">Agregar</button>
+            <button id="btn3" class="btn btn1" data-name="022" data-color="Azul Marino - Rosa Pastel">Agregar</button>
+        </div>
+    </div>
+    <div class="page">
+        <img src="pages/3.jpg" alt="Page 3">
+        <div class="page-buttons">
+            <button id="btn4" class="btn btn1" data-name="022" data-color="Negro - Rojo">Agregar</button>
+            <button id="btn5" class="btn btn1" data-name="022" data-color="Negro - Blanco">Agregar</button>
+            <button id="btn6" class="btn btn1" data-name="022" data-color="Negro - Gris Oxford">Agregar</button>
+        </div>
+    </div>
+    <div class="page">
+        <img src="pages/4.jpg" alt="Page 4">
+        <div class="page-buttons">
+            <button id="btn7" class="btn btn1" data-name="021" data-color="Negro - Gris Oxford">Agregar</button>
+            <button id="btn8" class="btn btn1" data-name="021" data-color="Negro - Verde Menta">Agregar</button>
+            <button id="btn9" class="btn btn1" data-name="021" data-color="Negro - Rosa Pastel">Agregar</button>
+            <button id="btn10" class="btn btn1" data-name="021" data-color="Negro - Fisuha">Agregar</button>
+        </div>
+    </div>
+    <div class="page">
+        <img src="pages/5.jpg" alt="Page 5">
+        <div class="page-buttons">
+            <button id="btn11" class="btn btn1" data-name="021" data-color="Negro - Rojo">Agregar</button>
+            <button id="btn12" class="btn btn1" data-name="021" data-color="Negro - Blanco">Agregar</button>
+            <button id="btn13" class="btn btn1" data-name="021" data-color="Negro - Azul Rey">Agregar</button>
+      </div>
+    </div>
+
+    <div class="page">
+        <img src="pages/6.jpg" alt="Page 6">
+      <div class="page-buttons">
+        <button id="btn14" class="btn btn1" data-name="020" data-color="Negro - Fisuha">Agregar</button>
+        <button id="btn15" class="btn btn1" data-name="020" data-color="Rosa Maquillaje">Agregar</button>
+        <button id="btn16" class="btn btn1" data-name="020" data-color="Gris - Fisuha">Agregar</button>
+      </div>
+    </div>
+
+    <div class="page">
+        <img src="pages/7.jpg" alt="Page 7">
+      <div class="page-buttons">
+        <button id="btn17" class="btn btn1" data-name="020" data-color="Rojo - Blanco">Agregar</button>
+        <button id="btn18" class="btn btn1" data-name="020" data-color="Negro - Blanco">Agregar</button>
+        <button id="btn19" class="btn btn1" data-name="020" data-color="Azul Marino - Blanco">Agregar</button>
+      </div>
+    </div>
+
+    <div class="page">
+        <img src="pages/8.jpg" alt="Page 8">
+      <div class="page-buttons">
+        <button id="btn20" class="btn btn1" data-name="022" data-color="Negro - Fiusha">Agregar</button>
+        <button id="btn21" class="btn btn1" data-name="022" data-color="Negro - Fiusha">Agregar</button>
+        <button id="btn22" class="btn btn1" data-name="022" data-color="Negro - Fiusha">Agregar</button>
+      </div>
+    </div>
+
+</div>
+
+
+<div class="nav-buttons">
+    <button id="prev">⟨</button>
+    <button id="next">⟩</button>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Información de contacto</h3>
+            <p>Dirección: Calz Independencia Sur 15, San Juan de Dios, 44100 Guadalajara, Jal.</p>
+            <p>Teléfono: +52 33 19 74 95 27</p>
+            <p>Email: zapatoeconomico1@gmail.com</p>
+        </div>
+        <div class="footer-section">
+            <h3>Síguenos</h3>
+            <ul class="social-links">
+                <li><a href="https://www.facebook.com/HVDepositosDeCalzado">Facebook<i class="fab fa-facebook"></i></a></li>
+                <li><a href="https://www.instagram.com/hv_deposito_de_calzado/">Instagram<i class="fab fa-instagram"></i></a></li>
+                <li><a href="https://www.tiktok.com/@depositodecalzado">TikTok<i class="fab fa-tiktok"></i></a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Tienda en línea</h3>
+            <ul class="social-links">
+                <li><a href="https://www.facebook.com/HVDepositosDeCalzado">Como comprar<i class="fab fa-facebook"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 H.V. Depósitos de Calzado. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<script type="text/javascript">
+    function resizeFlipbook() {
+        var width, height;
+        if ($(window).width() <= 768) {
+            width = $(window).width() * 1.0; // 90% of window width
+            height = width / 1.3;  // Adjust the height as per your requirement
+            $("#flipbook").turn("display", "single");
+        } else {
+            width = ($(window).width() * 0.4);
+            height = width / 1.3;
+                $("#flipbook").turn("display", "single");
+            }
+            $("#flipbook").turn("size", width, height);
+            $("#flipbook .page img").css({
+                width: width + 'px',
+                height: height + 'px'
+            });
+        }
+
+        $(window).on("load resize orientationchange", function() {
+            resizeFlipbook();
+        });
+
+        $("#flipbook").turn({
+            width: 900,
+            height: 600,
+            autoCenter: true
+        });
+
+        $("#prev").click(function() {
+            $("#flipbook").turn("previous");
+        });
+
+        $("#next").click(function() {
+            $("#flipbook").turn("next");
+        });
+
+        resizeFlipbook();  // Initial call
+    </script>
+
+    <script src="js/Carrito.js"></script>
+
+
+</body>
+</html>
